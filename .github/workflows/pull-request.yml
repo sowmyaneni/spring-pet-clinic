@@ -1,3 +1,5 @@
+# yml file for package, artifact upload and publishing test results
+
 name: spring-pet-clinic
 
 on:
