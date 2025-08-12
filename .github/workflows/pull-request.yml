@@ -25,6 +25,6 @@ jobs:
               uses: EnricoMi/publish-unit-test-result-action@v2
               with:
                 files: |
-                  **/surefire-reports/.xml
+                  **/surefire-reports/*.xml
               
             
