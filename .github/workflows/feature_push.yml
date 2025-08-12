@@ -5,26 +5,15 @@ on:
         branches:
             - 'feature/**'
 
-permissions:
-    checks: write
-
 jobs:
     build:
         runs-on: ubuntu-24.04
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
-
-            - name: Cache Maven dependencies
-              uses: actions/cache@v4
-              with:
-                path: ~/.m2/repository
-                key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-                restore-keys: |
-                    ${{ runner.os }}-maven-
+              uses: actions/checkout@4
             
             - name: Run maven package
-              run: mvn clean package
+              run: mvn package
             
             - name: Artifact upload
               uses: actions/upload-artifact@v4
@@ -36,6 +25,6 @@ jobs:
               uses: EnricoMi/publish-unit-test-result-action@v2
               with:
                 files: |
-                  **/surefire-reports/*.xml
+                  **/surefire-reports/.xml
               
             
